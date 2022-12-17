@@ -1,6 +1,6 @@
+import { ThemeProvider } from '@emotion/react';
 import { Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from '@emotion/react';
 
 import { ROUTER_NAME } from './constants';
 import { Login, Signup } from './pages';
