@@ -1,4 +1,4 @@
-# Slack 클론 코딩 (react + nestjs)
+## Slack Clone (react + nestjs)
 
 - [web_client](https://github.com/chchgyu/slack_clone/tree/master/packages/web_client) with react
 - [server_api](https://github.com/chchgyu/slack_clone/tree/master/packages/server_api) with nestjs
