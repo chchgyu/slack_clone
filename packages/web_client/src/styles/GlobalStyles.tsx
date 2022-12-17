@@ -1,8 +1,9 @@
 import { css, Global } from '@emotion/react';
-import emotionReset from 'emotion-reset';
+
+import { reset } from './shared/reset';
 
 const DefaultStyle = css`
-  ${emotionReset}
+  ${reset}
 
   *, *::after, *::before {
     box-sizing: border-box;

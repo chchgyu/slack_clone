@@ -1,14 +1,42 @@
 import { LoadingButton } from '@mui/lab';
 import { Alert, Box, Container, Grid, TextField, Typography } from '@mui/material';
+import { SignupRequestDto } from '@slack_clone/common';
+import { KeyboardEvent, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { Logo } from '../components';
 import { ROUTER_NAME } from '../constants';
 
 const Signup = () => {
-  const onSubmit = () => {
-    console.log('onSubmit');
+  // const { request: login, loading } = useLogin();
+  const handleLogin = async (data: SignupRequestDto) => {
+    // await login(data.username, data.password);
+    console.log(data);
   };
+
+  const { register, setFocus, handleSubmit, watch, getValues } = useForm<SignupRequestDto>();
+  const onSubmit = handleSubmit((data) => {
+    handleLogin(data);
+  });
+
+  const onKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const email = getValues('email');
+      const nickname = getValues('nickname');
+      const password = getValues('password');
+      const confirmPassword = getValues('confirmPassword');
+
+      if (email && nickname && password && confirmPassword) {
+        handleLogin({ email, nickname, password });
+      }
+    }
+  };
+
+  useEffect(() => {
+    setFocus('email', { shouldSelect: true });
+  }, [setFocus]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -26,24 +54,43 @@ const Signup = () => {
         <Typography component="h1" variant="h5">
           회원가입
         </Typography>
-        <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate sx={{ mt: 3 }} onSubmit={onSubmit} onKeyDown={onKeyDown}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField name="name" required fullWidth label="닉네임" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField name="email" required fullWidth label="이메일 주소" autoComplete="off" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField name="password" required fullWidth label="비밀번호" type="password" />
+              <TextField
+                label="이메일 주소"
+                autoComplete="off"
+                fullWidth
+                required
+                {...register('email', { required: true })}
+              />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                name="confirmPassword"
-                required
+                label="닉네임"
                 fullWidth
+                required
+                {...register('nickname', { required: true })}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                label="비밀번호"
+                type="password"
+                autoComplete="on"
+                fullWidth
+                required
+                {...register('password', { required: true })}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
                 label="비밀번호 확인"
                 type="password"
+                autoComplete="on"
+                fullWidth
+                required
+                {...register('confirmPassword', { required: true })}
               />
             </Grid>
           </Grid>
@@ -56,6 +103,12 @@ const Signup = () => {
             variant="contained"
             color="secondary"
             sx={{ mt: 3, mb: 2 }}
+            disabled={
+              !watch('email') ||
+              !watch('nickname') ||
+              !watch('password') ||
+              !watch('confirmPassword')
+            }
           >
             회원가입
           </LoadingButton>

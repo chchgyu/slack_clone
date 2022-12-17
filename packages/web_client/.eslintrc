@@ -19,6 +19,7 @@
     }
   },
   "rules": {
+    "@typescript-eslint/no-use-before-define": "off",
     "react/react-in-jsx-scope": "off"
   }
 }

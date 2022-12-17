@@ -8,7 +8,10 @@
     "packages": [
       "packages/*"
     ],
-    "nohoist": []
+    "nohoist": [
+      "**/@emotion/*",
+      "**/@mui/*"
+    ]
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
