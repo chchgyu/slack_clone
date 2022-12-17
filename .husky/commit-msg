@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\033[32m"커밋메세지 유효성 검사 진행 중 입니다."\033[m"
+yarn commitlint --edit $1
