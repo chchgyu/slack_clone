@@ -3,6 +3,7 @@ import emotionReset from 'emotion-reset';
 
 const DefaultStyle = css`
   ${emotionReset}
+
   *, *::after, *::before {
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
@@ -10,14 +11,15 @@ const DefaultStyle = css`
     line-height: 1.4;
     color: #333;
   }
+
   a {
     color: inherit;
     text-decoration: none;
   }
 `;
 
-const GlobalStyle = () => {
+const GlobalStyles = () => {
   return <Global styles={DefaultStyle} />;
 };
 
-export default GlobalStyle;
+export default GlobalStyles;

@@ -1,24 +1,26 @@
 import { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 
-import { RouterConfig, queryClient } from './libs';
-import { GlobalStyle, theme } from './styles';
+import { ROUTER_NAME } from './constants';
+import { Login, Signup } from './pages';
+import { GlobalStyles } from './styles';
+
+const theme = {};
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Suspense fallback={<span>Loading...</span>}>
-          <RouterConfig />
-        </Suspense>
-      </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
+      <GlobalStyles />
+      <Suspense fallback={<span>Loading...</span>}>
+        <Routes>
+          <Route path={ROUTER_NAME.HOME} element={<Navigate to={ROUTER_NAME.LOGIN} />} />
+          <Route path={ROUTER_NAME.LOGIN} element={<Login />} />
+          <Route path={ROUTER_NAME.SIGNUP} element={<Signup />} />
+        </Routes>
+      </Suspense>
     </ThemeProvider>
-  </QueryClientProvider>
+  </BrowserRouter>
 );
 
 export default App;
