@@ -16,9 +16,11 @@ const App = () => {
   const setCurrentUser = useSetRecoilState(currentUserAtom);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(getAuth(), (user) =>
-      user ? setCurrentUser(user) : setCurrentUser(null),
-    );
+    const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
+      const userCopy = JSON.parse(JSON.stringify(user));
+      setCurrentUser(userCopy);
+      // user ? setCurrentUser(user) : setCurrentUser(null),
+    });
 
     return () => unsubscribe();
   }, [setCurrentUser]);
