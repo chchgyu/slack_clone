@@ -25,9 +25,9 @@
     }
   },
   "scripts": {
-    "dev:app": "yarn lerna run --scope @slack_clone/web_client dev",
+    "dev:app": "yarn lerna run --scope @slack_clone/app_client dev",
     "dev:api": "yarn lerna run --scope @slack_clone/server_api start:dev",
-    "build:app": "yarn lerna run --scope @slack_clone/web_client build",
+    "build:app": "yarn lerna run --scope @slack_clone/app_client build",
     "build:api": "yarn lerna run --scope @slack_clone/server_api build",
     "prepare": "husky install",
     "commit": "yarn git-cz",

@@ -1,6 +1,7 @@
 export const ROUTER_NAME = {
   HOME: '/',
   SIGNUP: '/signup',
+  MAIN: '/main',
   LOGIN: '/login',
 } as const;
 
