@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { CreateChannelRequestDto } from '@slack_clone/common';
 import { child, getDatabase, push, ref, update } from 'firebase/database';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 interface AddChannelDialogProps {
@@ -20,8 +20,7 @@ interface AddChannelDialogProps {
 }
 
 const AddChannelDialog: FC<AddChannelDialogProps> = ({ onClose, open }) => {
-  const { register, setFocus, handleSubmit, watch, getValues, setValue } =
-    useForm<CreateChannelRequestDto>();
+  const { register, watch, getValues, setValue } = useForm<CreateChannelRequestDto>();
 
   const onCreate = async () => {
     const db = getDatabase();
@@ -73,7 +72,9 @@ const AddChannelDialog: FC<AddChannelDialogProps> = ({ onClose, open }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>취소</Button>
-        <Button onClick={onCreate}>생성</Button>
+        <Button onClick={onCreate} disabled={!watch('details') || !watch('name')}>
+          생성
+        </Button>
       </DialogActions>
     </Dialog>
   );

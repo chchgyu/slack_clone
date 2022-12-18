@@ -14,13 +14,13 @@ const Main = () => {
   return (
     <Box sx={{ display: 'flex', backgroundColor: theme.subTheme }}>
       <Header />
-      <Drawer variant="permanent" sx={{ width: 300 }} className="no-scroll">
+      <DrawerNoScroll variant="permanent" sx={{ width: 300 }}>
         <Toolbar />
         <Box sx={{ display: 'flex', minHeight: 'calc( 100vh - 64px )' }}>
           {/* <ThemeMenu /> */}
           <ChannelMenu />
         </Box>
-      </Drawer>
+      </DrawerNoScroll>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {/* <Chat /> */}
       </Box>

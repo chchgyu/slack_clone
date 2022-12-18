@@ -7,19 +7,22 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import { ChannelResponenseDto } from '@slack_clone/common';
 import { getDatabase, onChildAdded, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { themeAtom } from '../store';
+import { currentChannelAtom, themeAtom } from '../store';
 import AddChannelDialog from './dialogs/AddChannelDialog';
 
 const ChannelMenu = () => {
   const theme = useRecoilValue(themeAtom);
+  const setCurrentChannel = useSetRecoilState(currentChannelAtom);
 
-  const [activeChannelId, setActiveChannelId] = useState('');
-  const [channels, setChannels] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
+  const [channels, setChannels] = useState<ChannelResponenseDto[]>([]);
+  const [activeChannelId, setActiveChannelId] = useState('');
+  const [firstLoaded, setFirstLoaded] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onChildAdded(ref(getDatabase(), 'channels'), (snapshot) => {
@@ -35,9 +38,17 @@ const ChannelMenu = () => {
   const onClickOpen = () => setOpen(true);
   const onClickClose = () => setOpen(false);
 
-  const onClickChangeChannel = (channel: any) => () => {
-    console.log('onClickChangeChannel');
+  const onClickChangeChannel = (channel: ChannelResponenseDto) => () => {
+    setActiveChannelId(channel.id);
   };
+
+  useEffect(() => {
+    if (channels.length > 0 && firstLoaded) {
+      setActiveChannelId(channels[0].id);
+      setCurrentChannel(channels[0]);
+      setFirstLoaded(false);
+    }
+  }, [channels, firstLoaded, setCurrentChannel]);
 
   return (
     <>

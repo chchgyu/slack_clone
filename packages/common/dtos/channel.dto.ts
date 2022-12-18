@@ -7,3 +7,8 @@ export class CreateChannelRequestDto {
   @IsString()
   details: string;
 }
+
+export class ChannelResponenseDto extends CreateChannelRequestDto {
+  @IsString()
+  id: string;
+}
