@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { currentChannelAtom, themeAtom } from '../store';
-import AddChannelDialog from './dialogs/AddChannelDialog';
+import { AddChannelDialog } from './dialogs';
 
 const ChannelMenu = () => {
   const theme = useRecoilValue(themeAtom);
@@ -39,7 +39,9 @@ const ChannelMenu = () => {
   const onClickClose = () => setOpen(false);
 
   const onClickChangeChannel = (channel: ChannelResponenseDto) => () => {
+    if (channel.id === activeChannelId) return;
     setActiveChannelId(channel.id);
+    setCurrentChannel(channel);
   };
 
   useEffect(() => {

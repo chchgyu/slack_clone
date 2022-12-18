@@ -10,7 +10,6 @@ const DefaultStyle = css`
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 100%;
     line-height: 1.4;
-    color: #333;
   }
 
   a {
