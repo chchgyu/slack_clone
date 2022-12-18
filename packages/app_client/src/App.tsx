@@ -7,23 +7,24 @@ import { BrowserRouter } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { RootRoutes } from './routes';
-import { currentUserAtom } from './store';
+import { currentUserAtom, userLoadingAtom } from './store';
 import { GlobalStyles } from './styles';
 
 const theme = {};
 
 const App = () => {
   const setCurrentUser = useSetRecoilState(currentUserAtom);
+  const setIsUserLoading = useSetRecoilState(userLoadingAtom);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
       const userCopy = JSON.parse(JSON.stringify(user));
       setCurrentUser(userCopy);
-      // user ? setCurrentUser(user) : setCurrentUser(null),
+      setIsUserLoading(false);
     });
 
     return () => unsubscribe();
-  }, [setCurrentUser]);
+  }, [setCurrentUser, setIsUserLoading]);
 
   return (
     <BrowserRouter>
