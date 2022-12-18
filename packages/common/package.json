@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "https://github.com/chchgyu/slack_clone",
   "author": "여찬규 <wry5533@gmail.com>",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "dependencies": {
     "class-validator": "^0.14.0"
   }

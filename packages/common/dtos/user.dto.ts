@@ -6,12 +6,12 @@ export class SignupResponseDto {
 
   @IsEmail()
   email: string;
-
-  @IsString()
-  password: string;
 }
 
 export class SignupRequestDto extends SignupResponseDto {
+  @IsString()
+  password: string;
+
   @IsString()
   confirmPassword?: string;
 }
