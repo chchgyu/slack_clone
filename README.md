@@ -11,8 +11,8 @@
 
 ## apps folder structure
 
-- [web-client](https://github.com/chchgyu/slack_clone/tree/master/apps/web) with react
-- [api-server](https://github.com/chchgyu/slack_clone/tree/master/apps/api) with nestjs
+- [web-client](https://github.com/chchgyu/slack_clone/tree/master/apps/web-client) with react
+- [api-server](https://github.com/chchgyu/slack_clone/tree/master/apps/api-server) with nestjs
 
 <br />
 
