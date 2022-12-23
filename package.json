@@ -6,9 +6,9 @@
   "author": "여찬규 <wry5533@gmail.com>",
   "private": true,
   "scripts": {
-    "dev:web": "nx serve web-client",
+    "dev": "nx serve web-client",
     "dev:api": "nx serve api-server",
-    "dev": "yarn dev:api & yarn dev:web"
+    "build": "nx build web-client"
   },
   "dependencies": {
     "@emotion/react": "11.10.5",
