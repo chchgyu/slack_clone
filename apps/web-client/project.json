@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/web-client"
+        "outputPath": "dist/apps/client"
       },
       "configurations": {
         "development": {

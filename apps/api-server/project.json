@@ -10,7 +10,7 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/api-server",
+        "outputPath": "dist/apps/server",
         "main": "apps/api-server/src/main.ts",
         "tsConfig": "apps/api-server/tsconfig.app.json",
         "assets": ["apps/api-server/src/assets"]
@@ -32,7 +32,8 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "api-server:build"
+        "buildTarget": "api-server:build",
+        "port": 0
       },
       "configurations": {
         "production": {
