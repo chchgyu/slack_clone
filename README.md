@@ -26,11 +26,6 @@ yarn add -D @nrwl/react
 ## 2.
 npx nx g @nrwl/react:app ${naming}
 
-## 2-2. vite로 새로운 프로젝트 추가 시
-npx nx g @nrwl/react:app ${naming} --bundler=vite
-```
-
-```
 # nestjs
 ## 1.
 yarn add -D @nrwl/nest
