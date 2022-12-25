@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["dtos", "index.ts", "index.ts"],
+  "extends": "../../tsconfig.json"
+}
