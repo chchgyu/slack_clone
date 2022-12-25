@@ -52,8 +52,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "web-client:build",
-        "hmr": true,
-        "proxyConfig": "apps/web-client/proxy.conf.json"
+        "hmr": true
       },
       "configurations": {
         "development": {
