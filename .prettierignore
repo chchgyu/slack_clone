@@ -1,6 +1,13 @@
 **/node_modules
+**/build
 **/dist
 **/.cache
 
 **/package-lock.json
 **/yarn.lock
+
+**/*.config.js
+**/*.config.ts
+
+.eslintrc
+.prettierrc

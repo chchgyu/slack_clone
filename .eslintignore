@@ -3,6 +3,11 @@
 **/dist
 **/.cache
 
-packages/back/*
+**/package-lock.json
+**/yarn.lock
+
 **/*.config.js
 **/*.config.ts
+
+.eslintrc
+.prettierrc
