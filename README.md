@@ -31,7 +31,7 @@ npx nx g @nrwl/react:app ${naming}
 yarn add -D @nrwl/nest
 
 ## 2.
-npx nx g @nrwl/nest:app ${naming} --frontendProject ${frontendAppName}
+npx nx g @nrwl/nest:app my-nest-app --frontendProject ${naming}
 ```
 
 <br />
@@ -40,8 +40,5 @@ npx nx g @nrwl/nest:app ${naming} --frontendProject ${frontendAppName}
 
 ```
 # react 공통 컴포넌트 라이브러리 추가 예시
-npx nx g @nrwl/react:lib ${naming}
-
-# 공통 라이브러리 추가
-npx nx g @nrwl/workspace:lib ${naming}
+npx nx g @nrwl/react:lib common-ui
 ```
