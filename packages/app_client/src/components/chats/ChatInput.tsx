@@ -12,22 +12,17 @@ import { Grid, IconButton, InputAdornment, LinearProgress, TextField } from '@mu
 import { getDatabase, push, ref, serverTimestamp, set } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRecoilValue } from 'recoil';
 
-import { currentChannelAtom, currentUserAtom } from '../../store';
 import ImageDialog from '../dialogs/ImageDialog';
 
 const ChatInput = () => {
-  const currentChannel = useRecoilValue(currentChannelAtom);
-  const currentUser = useRecoilValue(currentUserAtom);
-
   const [loading, setLoading] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [percent, setPercent] = useState(0);
   const [showEmoji, setShowEmoji] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  const { register, setFocus, getValues, setValue } = useForm<{ message: string }>();
+  const { register, setFocus, getValues } = useForm<{ message: string }>();
 
   const onClickTogglePicker = () => {
     setShowEmoji((show) => !show);
@@ -37,29 +32,8 @@ const ChatInput = () => {
     console.log('onClickOpen');
   };
 
-  const createMessage = () => ({
-    timestamp: serverTimestamp(),
-    user: {
-      id: currentUser?.uid,
-      name: currentUser?.displayName,
-      avatar: currentUser?.photoURL,
-    },
-    content: getValues('message'),
-  });
-
-  const onClickSendMessage = async () => {
-    const message = getValues('message');
-    if (!message) return;
-    setLoading(true);
-
-    try {
-      await set(push(ref(getDatabase(), `messages/${currentChannel?.id}`)), createMessage());
-      setValue('message', '');
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const onClickSendMessage = () => {
+    console.log('onClickSendMessage');
   };
 
   const onSelectEmoji = () => {

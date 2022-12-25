@@ -21,14 +21,3 @@ export class LoginRequestDto {
   @IsString()
   password: string;
 }
-
-export class UserResponseDto {
-  @IsString()
-  avatar: string;
-
-  @IsString()
-  id: string;
-
-  @IsString()
-  name: string;
-}

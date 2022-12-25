@@ -1,19 +1,14 @@
 import { Avatar, Grid, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-import { MessageResponseDto } from '@slack_clone/common';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import type { User } from 'firebase/auth';
 import { FC } from 'react';
 
-dayjs.extend(relativeTime);
-
 interface ChatMessageProps {
-  message: MessageResponseDto;
-  user: User;
+  message: any;
+  user: any;
 }
 
 // eslint-disable-next-line no-prototype-builtins
-const IsImage = (message: MessageResponseDto) => message.hasOwnProperty('image');
+const IsImage = (message: any) => message.hasOwnProperty('image');
 
 const ChatMessage: FC<ChatMessageProps> = ({ message, user }) => {
   return (
@@ -33,9 +28,9 @@ const ChatMessage: FC<ChatMessageProps> = ({ message, user }) => {
             primary={message.user.name}
             primaryTypographyProps={{
               fontWeight: 'bold',
-              color: message.user.id === user.uid ? 'orange' : 'black',
+              color: message.user.id === user.currentUser.uid ? 'orange' : 'black',
             }}
-            secondary={dayjs(message.timestamp).fromNow()}
+            // secondary={dayjs(message.timestamp).fromNow()}
             secondaryTypographyProps={{ color: 'gray', ml: 1 }}
           />
         </Grid>
