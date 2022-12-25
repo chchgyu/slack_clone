@@ -6,11 +6,11 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/*"
+      "apps/*",
+      "libs/*"
     ],
     "nohoist": [
-      "**/@emotion/*",
-      "**/@mui/*"
+      "**/@emotion/*"
     ]
   },
   "lint-staged": {
