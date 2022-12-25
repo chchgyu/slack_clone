@@ -2,12 +2,10 @@
   "name": "slack-clone",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "https://github.com/chchgyu/slack_clone",
-  "author": "여찬규 <wry5533@gmail.com>",
-  "private": true,
   "scripts": {
     "dev": "nx serve web"
   },
+  "private": true,
   "dependencies": {
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
