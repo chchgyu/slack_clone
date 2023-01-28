@@ -1,5 +1,5 @@
 {
-  "name": "server-api",
+  "name": "@slack_clone/server",
   "version": "1.0.0",
   "repository": "https://github.com/chchgyu/slack_clone",
   "author": "여찬규 <wry5533@gmail.com>",
